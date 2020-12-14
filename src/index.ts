@@ -2,7 +2,11 @@ import "reflect-metadata";
 import express from "express";
 import { ApolloServer } from "apollo-server-express";
 import { buildSchema } from "type-graphql";
-import { ConnectionOptions, createConnection, getConnectionOptions } from "typeorm";
+import {
+  ConnectionOptions,
+  createConnection,
+  getConnectionOptions,
+} from "typeorm";
 import cookieParser from "cookie-parser";
 import { verify } from "jsonwebtoken";
 import { User } from "./entity/User";
@@ -30,7 +34,6 @@ const getOptions = async () => {
 
 (async () => {
   const app = express();
-
   app.use(
     cors({
       origin: "https://edtosoy-furtech.web.app",
@@ -69,12 +72,8 @@ const getOptions = async () => {
 
     return res.send({ ok: true, accessToken: createAccessToken(user) });
   });
-
-  
   const typeormconfig = await getOptions();
   await createConnection(typeormconfig);
-
-  await createConnection();
 
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
