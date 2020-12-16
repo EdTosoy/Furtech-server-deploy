@@ -26,7 +26,7 @@ export class CartList extends BaseEntity {
 
   @Field({ nullable: true })
   @Column({ nullable: true })
-  price: string;
+  price: number;
   @Field({ nullable: true })
   @Column({ nullable: true })
   username: string;

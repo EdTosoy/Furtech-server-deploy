@@ -6,7 +6,7 @@ export class AddToCart {
   @Mutation(() => Boolean)
   async addToCart(
     @Arg("name") name: string,
-    @Arg("price") price: string,
+    @Arg("price") price: number,
     @Arg("username") username: string
   ) {
     const productExist = await CartList.find({ where: { name, username } });
